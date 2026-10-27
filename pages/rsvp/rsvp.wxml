@@ -1,0 +1,176 @@
+<!-- 出席确认页 -->
+<view class="page-wrap">
+
+  <!-- 导航栏 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{statusBarHeight + navBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="nav-title gold-static" style="top: {{statusBarHeight}}px; height: {{navBarHeight}}px; line-height: {{navBarHeight}}px;">出席确认</text>
+  </view>
+  <view style="height: {{statusBarHeight + navBarHeight + 10}}px;"></view>
+
+  <view class="page-pad">
+
+    <!-- ========== 表单 ========== -->
+    <block wx:if="{{!submitted}}">
+      <view class="page-head in-fade">
+        <text class="ph-title gold">出席确认</text>
+        <text class="ph-sub">RSVP · 请于 2027 年 6 月 20 日前完成确认</text>
+      </view>
+
+      <view class="card corner-deco form in-zoom">
+
+        <!-- 身份 -->
+        <view class="field">
+          <text class="label">您的身份<text class="req">*</text></text>
+          <view class="role-grid">
+            <view wx:for="{{roles}}" wx:key="key"
+                  class="role {{form.role === item.key ? 'active' : ''}}"
+                  data-key="{{item.key}}"
+                  bindtap="pickRole">
+              <text class="role-emoji">{{item.emoji}}</text>
+              <text class="role-label">{{item.label}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 姓名 -->
+        <view class="field">
+          <text class="label">姓名<text class="req">*</text></text>
+          <input class="input" placeholder="请输入您的姓名" placeholder-class="ph"
+                 maxlength="20" value="{{form.name}}" bindinput="onInput" data-key="name" />
+        </view>
+
+        <!-- 班级/单位 -->
+        <view class="field">
+          <text class="label">{{orgLabel}}</text>
+          <input class="input" placeholder="{{orgPlaceholder}}" placeholder-class="ph"
+                 maxlength="30" value="{{form.org}}" bindinput="onInput" data-key="org" />
+        </view>
+
+        <!-- 手机号 -->
+        <view class="field">
+          <text class="label">联系电话<text class="req">*</text></text>
+          <input class="input" type="number" placeholder="用于典礼当天联络" placeholder-class="ph"
+                 maxlength="11" value="{{form.phone}}" bindinput="onInput" data-key="phone" />
+        </view>
+
+        <!-- 人数 -->
+        <view class="field">
+          <text class="label">出席人数</text>
+          <view class="stepper">
+            <view class="step-btn {{form.count <= 1 ? 'disabled' : ''}}" bindtap="minus">－</view>
+            <text class="step-num">{{form.count}}</text>
+            <view class="step-btn {{form.count >= 6 ? 'disabled' : ''}}" bindtap="plus">＋</view>
+          </view>
+        </view>
+
+        <!-- 特殊需求 -->
+        <view class="field">
+          <text class="label">现场需求（可多选）</text>
+          <view class="chip-grid">
+            <view wx:for="{{needOptions}}" wx:key="val"
+                  class="chip {{item.active ? 'active' : ''}}"
+                  data-index="{{index}}" bindtap="toggleNeed">{{item.val}}</view>
+          </view>
+        </view>
+
+        <!-- 备注 -->
+        <view class="field">
+          <text class="label">其他留言（选填）</text>
+          <textarea class="textarea" placeholder="如有其他需要，请在此说明" placeholder-class="ph"
+                    maxlength="120" value="{{form.remark}}" bindinput="onInput" data-key="remark" />
+        </view>
+      </view>
+
+      <button class="btn-gold submit-btn" bindtap="submit">确认出席</button>
+      <text class="privacy">🔒 信息仅用于毕业典礼筹备与签到，不作其他用途</text>
+    </block>
+
+    <!-- ========== 电子席位票 ========== -->
+    <block wx:else>
+      <view class="page-head in-zoom">
+        <text class="ph-emoji">🎉</text>
+        <text class="ph-title gold">席位已确认</text>
+        <text class="ph-sub">{{ticket.name}}，期待与您共赴这场青春盛典</text>
+      </view>
+
+      <!-- 主券 -->
+      <view class="ticket in-zoom">
+        <view class="tk-head">
+          <text class="tk-college">{{collegeName}}</text>
+          <text class="tk-grade">{{grade}}毕业典礼</text>
+        </view>
+
+        <view class="tk-no-row">
+          <text class="tk-no-label">NO.</text>
+          <text class="tk-no">{{ticket.ticketNo}}</text>
+        </view>
+
+        <view class="tk-rows">
+          <view class="tk-row">
+            <text class="tk-k">姓　名</text>
+            <text class="tk-v">{{ticket.name}}</text>
+          </view>
+          <view class="tk-row">
+            <text class="tk-k">身　份</text>
+            <text class="tk-v">{{roleLabel}}</text>
+          </view>
+          <view wx:if="{{ticket.org}}" class="tk-row">
+            <text class="tk-k">{{orgShortLabel}}</text>
+            <text class="tk-v">{{ticket.org}}</text>
+          </view>
+          <view class="tk-row">
+            <text class="tk-k">人　数</text>
+            <text class="tk-v">{{ticket.count}} 人</text>
+          </view>
+          <view class="tk-row">
+            <text class="tk-k">时　间</text>
+            <text class="tk-v">{{timeText}}</text>
+          </view>
+          <view class="tk-row">
+            <text class="tk-k">地　点</text>
+            <text class="tk-v">{{venue}}</text>
+          </view>
+          <view wx:if="{{ticket.needs.length || ticket.remark}}" class="tk-row">
+            <text class="tk-k">备　注</text>
+            <text class="tk-v">{{needsText}}{{ticket.remark}}</text>
+          </view>
+        </view>
+
+        <view class="tk-seal">
+          <text>筹备组</text>
+          <text>已核验</text>
+        </view>
+      </view>
+
+      <!-- 撕齿 -->
+      <view class="perforation">
+        <view class="notch notch-l"></view>
+        <view class="dash"></view>
+        <view class="notch notch-r"></view>
+      </view>
+
+      <!-- 副券 -->
+      <view class="stub in-zoom">
+        <view class="stub-l">
+          <text class="stub-title">签到副券</text>
+          <text class="stub-no">{{ticket.ticketNo}}</text>
+          <text class="stub-name">{{ticket.name}} · {{ticket.count}}人</text>
+        </view>
+        <view class="barcode">
+          <view wx:for="{{barcodeBars}}" wx:key="id"
+                class="bar" style="width:{{item.w}}rpx;"></view>
+        </view>
+      </view>
+
+      <view class="ticket-actions">
+        <button class="btn-ghost ta-btn" bindtap="edit">修改信息</button>
+        <button class="btn-gold ta-btn" bindtap="goHome">返回邀请函</button>
+      </view>
+      <button class="link-btn" bindtap="goWishes">顺便写一句毕业寄语 ›</button>
+    </block>
+
+  </view>
+</view>

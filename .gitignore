@@ -1,0 +1,22 @@
+# 微信小程序
+miniprogram_npm/
+
+# 依赖
+node_modules/
+
+# 日志
+*.log
+npm-debug.log*
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 私密配置（如有）
+project.private.config.json

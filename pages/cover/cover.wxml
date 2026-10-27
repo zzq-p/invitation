@@ -1,0 +1,64 @@
+<!-- 封面页 -->
+<view class="page-wrap cover">
+
+  <!-- 星空粒子画布 -->
+  <canvas type="2d" id="particle" class="particle"></canvas>
+
+  <!-- 内容层 -->
+  <view class="cover-inner" style="padding-top: {{statusBarHeight + 24}}px;">
+
+    <!-- 校名 -->
+    <view class="cover-top">
+      <text class="school">{{schoolName}}</text>
+      <view class="ornament top-orn">
+        <view class="bar"></view>
+        <view class="diamond"></view>
+        <view class="bar"></view>
+      </view>
+    </view>
+
+    <!-- 徽章 -->
+    <view class="badge-wrap">
+      <view class="badge-ring ring-outer"></view>
+      <view class="badge-ring ring-inner"></view>
+      <view class="badge floaty">
+        <text class="badge-emoji">🎓</text>
+        <text class="badge-ai">AI</text>
+      </view>
+      <view class="badge-light"></view>
+    </view>
+
+    <!-- 标题 -->
+    <view class="title-block">
+      <text class="t-college gold">{{collegeName}}</text>
+      <text class="t-grade gold">{{grade}}</text>
+      <text class="t-name">{{ceremonyName}}</text>
+      <view class="t-card">
+        <text class="t-invite">邀　请　函</text>
+      </view>
+      <text class="t-date">2027 · 06 · 26　星期六</text>
+    </view>
+
+    <!-- 底部操作 -->
+    <view class="cover-foot">
+      <view class="seal">
+        <text class="seal-text">诚邀</text>
+        <text class="seal-sub">莅临</text>
+      </view>
+      <button class="open-btn" hover-class="open-btn-hover" bindtap="openInvite">
+        <text class="open-btn-text">敬启邀请函</text>
+        <text class="open-btn-arrow">›</text>
+      </button>
+      <text class="foot-hint">敬爱的老师 · 亲爱的同学 · 尊敬的校友</text>
+    </view>
+
+  </view>
+
+  <!-- 背景音乐（仅在 config.bgmSrc 配置后显示） -->
+  <view wx:if="{{musicEnabled}}"
+        class="music-fab {{musicPlaying ? 'playing' : ''}}"
+        bindtap="toggleMusic">
+    <text class="disc">🎵</text>
+  </view>
+
+</view>

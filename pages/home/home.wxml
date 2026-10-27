@@ -1,0 +1,200 @@
+<!-- 邀请函主页 -->
+<view class="page-wrap">
+
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{statusBarHeight + navBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="nav-title gold-static" style="top: {{statusBarHeight}}px; height: {{navBarHeight}}px; line-height: {{navBarHeight}}px;">邀 请 函</text>
+    <view wx:if="{{musicEnabled}}"
+          class="nav-music {{musicPlaying ? 'playing' : ''}}"
+          style="top: {{statusBarHeight + (navBarHeight - 32)/2}}px;"
+          bindtap="toggleMusic">
+      <text class="disc">🎵</text>
+    </view>
+  </view>
+  <!-- 导航栏占位 -->
+  <view style="height: {{statusBarHeight + navBarHeight + 10}}px;"></view>
+
+  <view class="page-pad">
+
+    <!-- 页眉 -->
+    <view class="hero in-fade">
+      <text class="hero-en">INVITATION · 2027</text>
+      <view class="ornament hero-orn">
+        <view class="bar"></view>
+        <view class="diamond"></view>
+        <view class="bar"></view>
+      </view>
+      <text class="hero-title gold">{{collegeName}}{{grade}}</text>
+      <text class="hero-sub gold-static">{{ceremonyName}}</text>
+    </view>
+
+    <!-- 请柬正文 -->
+    <view class="card corner-deco letter reveal in">
+      <view class="letter-salute">
+        <text class="salute-text">致　亲爱的老师、{{grade}}毕业生、各界校友：</text>
+      </view>
+
+      <view class="letter-body">
+        <view class="indent">
+          兹定于{{timeText}}，于{{venue}}隆重举行{{schoolName}}{{collegeName}}{{grade}}{{ceremonyName}}。
+        </view>
+        <view class="indent">
+          四载春秋，实验室的灯火、代码行间的求索、赛场上的并肩，皆化作此刻最珍贵的青春答卷。值此学子们圆满完成学业、即将扬帆远航之际，恭请您拨冗莅临，共证拨穗之礼，同享收获之喜，共赴前程之约。
+        </view>
+        <view class="letter-closing">专此奉邀　敬祈惠允</view>
+      </view>
+
+      <view class="letter-foot">
+        <view class="ornament">
+          <view class="bar"></view>
+          <view class="diamond"></view>
+          <view class="bar"></view>
+        </view>
+        <text class="sign-org">{{schoolName}}{{collegeName}}</text>
+        <text class="sign-date">二〇二七年六月</text>
+      </view>
+    </view>
+
+    <!-- 时间地点 -->
+    <view class="section-title reveal {{revealStates[0] ? 'in' : ''}}" data-idx="0">
+      <view class="line"></view>
+      <text class="gold">典礼时间</text>
+      <text class="gold">·</text>
+      <text class="gold">地点</text>
+      <view class="line right"></view>
+    </view>
+
+    <view class="card corner-deco reveal {{revealStates[1] ? 'in' : ''}}" data-idx="1">
+      <view class="when-row">
+        <!-- 日历块 -->
+        <view class="calendar">
+          <text class="cal-month">JUN</text>
+          <text class="cal-day">26</text>
+          <text class="cal-week">星期六</text>
+        </view>
+        <view class="when-info">
+          <view class="info-line">
+            <text class="info-icon">🕘</text>
+            <text class="info-text">{{timeText}}</text>
+          </view>
+          <view class="info-line">
+            <text class="info-icon">🏛️</text>
+            <text class="info-text">{{venue}}</text>
+          </view>
+          <view class="info-line">
+            <text class="info-icon">📍</text>
+            <text class="info-text text-dim">{{address}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 倒计时 -->
+      <view class="countdown">
+        <block wx:if="{{!started}}">
+          <text class="cd-label">距离典礼还有</text>
+          <view class="cd-boxes">
+            <view class="cd-box"><text class="cd-num">{{cd.days}}</text><text class="cd-unit">天</text></view>
+            <text class="cd-colon">:</text>
+            <view class="cd-box"><text class="cd-num">{{cd.hours}}</text><text class="cd-unit">时</text></view>
+            <text class="cd-colon">:</text>
+            <view class="cd-box"><text class="cd-num">{{cd.mins}}</text><text class="cd-unit">分</text></view>
+            <text class="cd-colon">:</text>
+            <view class="cd-box"><text class="cd-num">{{cd.secs}}</text><text class="cd-unit">秒</text></view>
+          </view>
+        </block>
+        <block wx:else>
+          <text class="cd-label">典礼已启幕 · 共赴青春之约</text>
+        </block>
+      </view>
+    </view>
+
+    <!-- 典礼流程 -->
+    <view class="section-title reveal {{revealStates[2] ? 'in' : ''}}" data-idx="2">
+      <view class="line"></view>
+      <text class="gold">典礼流程</text>
+      <view class="line right"></view>
+    </view>
+    <view class="section-sub reveal {{revealStates[3] ? 'in' : ''}}" data-idx="3">CEREMONY AGENDA</view>
+
+    <view class="card corner-deco timeline reveal {{revealStates[4] ? 'in' : ''}}" data-idx="4">
+      <view wx:for="{{schedule}}" wx:key="title" class="tl-item">
+        <view class="tl-axis">
+          <view class="tl-dot {{index === 5 ? 'hl' : ''}}"></view>
+          <view wx:if="{{index !== schedule.length - 1}}" class="tl-line"></view>
+        </view>
+        <view class="tl-body">
+          <view class="tl-head">
+            <text class="tl-time gold-static">{{item.time}}</text>
+            <text class="tl-title">{{item.title}}</text>
+          </view>
+          <text wx:if="{{item.desc}}" class="tl-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 交通指引 -->
+    <view class="section-title reveal {{revealStates[5] ? 'in' : ''}}" data-idx="5">
+      <view class="line"></view>
+      <text class="gold">交通指引</text>
+      <view class="line right"></view>
+    </view>
+
+    <view class="traffic-list">
+      <view wx:for="{{traffic}}" wx:key="title"
+            data-idx="{{6 + index}}"
+            class="card corner-deco traffic-item reveal {{revealStates[6 + index] ? 'in' : ''}}">
+        <text class="tf-icon">{{item.icon}}</text>
+        <view class="tf-body">
+          <text class="tf-title">{{item.title}}</text>
+          <text class="tf-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 温馨提示 -->
+    <view class="section-title reveal {{revealStates[9] ? 'in' : ''}}" data-idx="9">
+      <view class="line"></view>
+      <text class="gold">温馨提示</text>
+      <view class="line right"></view>
+    </view>
+
+    <view class="card corner-deco tips reveal {{revealStates[10] ? 'in' : ''}}" data-idx="10">
+      <view wx:for="{{tips}}" wx:key="*this" class="tip-item">
+        <text class="tip-num">{{index + 1}}</text>
+        <text class="tip-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 底部行动区 -->
+    <view class="cta reveal {{revealStates[11] ? 'in' : ''}}" data-idx="11">
+      <view class="ornament cta-orn">
+        <view class="bar"></view>
+        <view class="diamond"></view>
+        <view class="bar"></view>
+      </view>
+
+      <view wx:if="{{rsvp}}" class="rsvped">
+        <text class="rsvped-icon">✅</text>
+        <text class="rsvped-text">{{rsvp.name}}（{{rsvp.roleLabel}}）已确认出席</text>
+        <text class="rsvped-sub">共 {{rsvp.count}} 人 · 期待与您相见</text>
+      </view>
+
+      <button class="btn-gold cta-btn" bindtap="goRsvp">
+        <text>{{rsvp ? '查看 / 修改出席信息' : '出席确认 · 领取席位'}}</text>
+      </button>
+      <button class="btn-ghost cta-btn" bindtap="goWishes">
+        <text>写下毕业寄语 · 祝福墙</text>
+      </button>
+
+      <view class="footer-mark">
+        <text class="fm-emoji">🎓</text>
+        <text class="fm-line">{{schoolName}}{{collegeName}}</text>
+        <text class="fm-sub">{{grade}}毕业典礼筹备组　敬邀</text>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,178 @@
+/* 祝福寄语墙样式 */
+.back-icon {
+  font-size: 48rpx;
+  color: var(--gold-light);
+  font-weight: 300;
+  line-height: 1;
+  margin-top: -4rpx;
+}
+
+.page-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 0 30rpx;
+}
+.ph-emoji {
+  font-size: 64rpx;
+  margin-bottom: 10rpx;
+}
+.ph-title {
+  font-size: 48rpx;
+  font-weight: 800;
+  letter-spacing: 8rpx;
+}
+.ph-sub {
+  margin-top: 12rpx;
+  font-size: 23rpx;
+  color: var(--text-faint);
+  letter-spacing: 2rpx;
+}
+.ph {
+  color: rgba(185, 178, 212, 0.45);
+}
+
+/* ---------- 写寄语卡片 ---------- */
+.write-card {
+  padding: 32rpx 34rpx;
+}
+.name-input {
+  height: 72rpx;
+  font-size: 28rpx;
+  color: var(--text);
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1rpx solid rgba(232, 200, 122, 0.14);
+}
+.role-chips {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 22rpx;
+}
+.r-chip {
+  padding: 10rpx 30rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  color: var(--text-dim);
+  border: 1rpx solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+.r-chip.active {
+  color: var(--gold-light);
+  border-color: var(--gold);
+  background: rgba(232, 200, 122, 0.12);
+}
+.wish-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+  min-height: 170rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  line-height: 1.7;
+  color: var(--text);
+  border-radius: 12rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1rpx solid rgba(232, 200, 122, 0.14);
+}
+.wc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22rpx;
+}
+.wc-count {
+  font-size: 22rpx;
+  color: var(--text-faint);
+}
+.send-btn {
+  margin: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 44rpx;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  color: #2a1f06;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  background: linear-gradient(135deg, #fbeebd, #e8c87a 55%, #c9962f);
+}
+.send-btn::after {
+  border: none;
+}
+
+/* ---------- 寄语墙（双列瀑布） ---------- */
+.wall {
+  column-count: 2;
+  column-gap: 20rpx;
+}
+.note {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 20rpx;
+  padding: 28rpx 26rpx 24rpx;
+  border-radius: 18rpx;
+  display: inline-block;
+  animation: zoomIn 0.6s ease both;
+}
+.note-0 {
+  background: linear-gradient(160deg, rgba(232, 200, 122, 0.13), rgba(232, 200, 122, 0.03));
+  border: 1rpx solid rgba(232, 200, 122, 0.3);
+}
+.note-1 {
+  background: linear-gradient(160deg, rgba(126, 146, 232, 0.16), rgba(126, 146, 232, 0.04));
+  border: 1rpx solid rgba(126, 146, 232, 0.32);
+}
+.note-2 {
+  background: linear-gradient(160deg, rgba(190, 132, 220, 0.14), rgba(190, 132, 220, 0.03));
+  border: 1rpx solid rgba(190, 132, 220, 0.3);
+}
+.note-quote {
+  position: absolute;
+  top: 4rpx;
+  left: 16rpx;
+  font-size: 48rpx;
+  color: rgba(232, 200, 122, 0.35);
+  font-family: serif;
+}
+.note-text {
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: var(--text);
+  letter-spacing: 0.5rpx;
+}
+.note-foot {
+  margin-top: 18rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4rpx;
+}
+.note-name {
+  font-size: 24rpx;
+  color: var(--gold-light);
+}
+.note-role {
+  font-size: 20rpx;
+  color: var(--text-faint);
+}
+
+/* ---------- 结尾 ---------- */
+.wall-end {
+  margin-top: 30rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18rpx;
+}
+.wall-end-text {
+  font-size: 23rpx;
+  letter-spacing: 2rpx;
+  color: var(--text-faint);
+}

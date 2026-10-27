@@ -1,0 +1,70 @@
+<!-- 祝福寄语墙 -->
+<view class="page-wrap">
+
+  <!-- 导航栏 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{statusBarHeight + navBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <text class="nav-title gold-static" style="top: {{statusBarHeight}}px; height: {{navBarHeight}}px; line-height: {{navBarHeight}}px;">祝福寄语墙</text>
+  </view>
+  <view style="height: {{statusBarHeight + navBarHeight + 10}}px;"></view>
+
+  <view class="page-pad">
+
+    <!-- 头部 -->
+    <view class="page-head in-fade">
+      <text class="ph-emoji">💌</text>
+      <text class="ph-title gold">祝福寄语墙</text>
+      <text class="ph-sub">WISH WALL · 写下此去繁花，寄给往后的我们</text>
+    </view>
+
+    <!-- 写寄语 -->
+    <view class="card corner-deco write-card in-zoom">
+      <view class="wc-row">
+        <input class="name-input" placeholder="您的称呼（选填）" placeholder-class="ph"
+               maxlength="12" value="{{form.name}}" bindinput="onInput" data-key="name" />
+      </view>
+      <view class="role-chips">
+        <view wx:for="{{roles}}" wx:key="*this"
+              class="r-chip {{form.role === item ? 'active' : ''}}"
+              data-val="{{item}}" bindtap="pickRole">{{item}}</view>
+      </view>
+      <textarea class="wish-input" placeholder="写下对母校、师长、同窗的祝福，或给未来的自己一句话……"
+                placeholder-class="ph" maxlength="100" value="{{form.text}}"
+                bindinput="onInput" data-key="text" />
+      <view class="wc-foot">
+        <text class="wc-count">{{form.text.length}}/100</text>
+        <button class="send-btn" bindtap="submit">贴上寄语墙</button>
+      </view>
+    </view>
+
+    <!-- 寄语墙 -->
+    <view class="section-title">
+      <view class="line"></view>
+      <text class="gold">全部寄语 · {{all.length}}</text>
+      <view class="line right"></view>
+    </view>
+
+    <view class="wall">
+      <view wx:for="{{all}}" wx:key="key" class="note note-{{index % 3}} in-fade">
+        <text class="note-quote">“</text>
+        <text class="note-text">{{item.text}}</text>
+        <view class="note-foot">
+          <text class="note-name">{{item.name}}</text>
+          <text class="note-role">{{item.role}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="wall-end">
+      <view class="ornament">
+        <view class="bar"></view>
+        <view class="diamond"></view>
+        <view class="bar"></view>
+      </view>
+      <text class="wall-end-text">愿你我皆有前程可奔赴，亦有岁月可回首</text>
+    </view>
+
+  </view>
+</view>

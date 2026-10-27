@@ -1,0 +1,270 @@
+/* ============================================================
+   全局样式 —— 人工智能学院 2027 届毕业典礼邀请函
+   主题：夜幕靛蓝 × 仪式鎏金
+   ============================================================ */
+
+page {
+  /* 主题色 */
+  --gold: #e8c87a;
+  --gold-light: #f8e8b8;
+  --gold-deep: #b8862f;
+  --gold-soft: rgba(232, 200, 122, 0.65);
+
+  --ink: #0b1026;
+  --ink-2: #141a3d;
+  --ink-3: #1d2455;
+
+  --text: #f3ecd9;
+  --text-dim: #b9b2d4;
+  --text-faint: #8d87aa;
+
+  --card-bg: rgba(255, 255, 255, 0.055);
+  --card-border: rgba(232, 200, 122, 0.28);
+  --hairline: rgba(232, 200, 122, 0.18);
+
+  background: var(--ink);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  font-size: 28rpx;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 字体 ---------- */
+.font-serif {
+  font-family: 'STSong', 'Songti SC', 'STSongti-SC-Black', 'SimSun', 'Noto Serif SC', serif;
+}
+
+/* ---------- 鎏金文字 ---------- */
+.gold {
+  background: linear-gradient(160deg, #fbf0c8 0%, #f0d28a 28%, #c9962f 52%, #f5dd9c 74%, #b9842c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gold-static { color: var(--gold); }
+.text-dim { color: var(--text-dim); }
+.text-faint { color: var(--text-faint); }
+.text-center { text-align: center; }
+
+/* ---------- 页面容器 ---------- */
+.page-wrap {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  background:
+    radial-gradient(1200rpx 700rpx at 80% -8%, rgba(86, 96, 196, 0.34), transparent 60%),
+    radial-gradient(900rpx 600rpx at 0% 18%, rgba(126, 66, 158, 0.22), transparent 60%),
+    radial-gradient(1000rpx 800rpx at 50% 108%, rgba(42, 60, 140, 0.34), transparent 60%),
+    linear-gradient(180deg, #0b1026 0%, #101539 46%, #0b1026 100%);
+}
+.page-pad {
+  padding: 0 48rpx;
+  padding-bottom: calc(60rpx + env(safe-area-inset-bottom));
+}
+
+/* ---------- 卡片 ---------- */
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1rpx solid var(--card-border);
+  border-radius: 24rpx;
+  padding: 40rpx 36rpx;
+  box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.28), inset 0 0 0 1rpx rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8rpx);
+}
+/* 卡片四角鎏金装饰 */
+.corner-deco::before,
+.corner-deco::after {
+  content: '';
+  position: absolute;
+  width: 34rpx;
+  height: 34rpx;
+  border: 2rpx solid var(--gold-soft);
+  pointer-events: none;
+}
+.corner-deco::before {
+  top: 14rpx;
+  left: 14rpx;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 12rpx;
+}
+.corner-deco::after {
+  bottom: 14rpx;
+  right: 14rpx;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 12rpx;
+}
+
+/* ---------- 章节标题 ---------- */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20rpx;
+  margin: 56rpx 0 32rpx;
+}
+.section-title .line {
+  width: 64rpx;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, var(--gold-soft));
+}
+.section-title .line.right {
+  background: linear-gradient(90deg, var(--gold-soft), transparent);
+}
+.section-title text {
+  font-size: 36rpx;
+  letter-spacing: 8rpx;
+  font-weight: 600;
+}
+.section-sub {
+  text-align: center;
+  font-size: 22rpx;
+  letter-spacing: 4rpx;
+  color: var(--text-faint);
+  margin-top: -20rpx;
+  margin-bottom: 30rpx;
+}
+
+/* ---------- 按钮 ---------- */
+.btn-gold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  height: 92rpx;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  letter-spacing: 6rpx;
+  color: #2a1f06;
+  font-weight: 600;
+  background: linear-gradient(135deg, #fbeebd 0%, #e8c87a 45%, #c9962f 100%);
+  box-shadow: 0 10rpx 30rpx rgba(201, 150, 47, 0.35), inset 0 1rpx 0 rgba(255, 255, 255, 0.6);
+}
+.btn-gold::after { border: none; }
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  height: 92rpx;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  letter-spacing: 6rpx;
+  color: var(--gold-light);
+  border: 1rpx solid var(--gold-soft);
+  background: rgba(232, 200, 122, 0.06);
+}
+.btn-ghost::after { border: none; }
+button[disabled] { opacity: 0.5; }
+
+/* ---------- 入场动画 ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(46rpx); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14rpx); }
+}
+@keyframes shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.in {
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+.in-fade { animation: fadeIn 1s ease forwards; }
+.in-zoom { animation: zoomIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards; }
+.floaty { animation: floaty 4.5s ease-in-out infinite; }
+
+/* ---------- 分隔纹样 ---------- */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  color: var(--gold-soft);
+}
+.ornament .diamond {
+  width: 10rpx;
+  height: 10rpx;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+.ornament .bar {
+  width: 90rpx;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+}
+
+/* ---------- 自定义导航栏 ---------- */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding-left: 24rpx;
+  box-sizing: border-box;
+}
+.nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid var(--card-border);
+}
+.nav-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 32rpx;
+  letter-spacing: 6rpx;
+  pointer-events: none;
+}
+.nav-music {
+  position: absolute;
+  right: 24rpx;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid var(--card-border);
+  font-size: 32rpx;
+}
+.nav-music .disc {
+  animation: spin 6s linear infinite;
+  animation-play-state: paused;
+}
+.nav-music.playing .disc {
+  animation-play-state: running;
+}

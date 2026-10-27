@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/cover/cover",
+    "pages/home/home",
+    "pages/rsvp/rsvp",
+    "pages/wishes/wishes"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#0b1026",
+    "backgroundColorTop": "#0b1026",
+    "backgroundColorBottom": "#0b1026",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "毕业典礼邀请函",
+    "navigationBarBackgroundColor": "#0b1026",
+    "disableScroll": false
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

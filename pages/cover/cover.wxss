@@ -1,0 +1,244 @@
+/* 封面页样式 */
+.cover {
+  height: 100vh;
+  width: 100%;
+}
+
+.particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.cover-inner {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0 56rpx calc(56rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- 校名 ---------- */
+.cover-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.2s ease 0.1s both;
+}
+.school {
+  font-size: 30rpx;
+  letter-spacing: 10rpx;
+  color: var(--text-dim);
+}
+.top-orn {
+  margin-top: 18rpx;
+}
+
+/* ---------- 徽章 ---------- */
+.badge-wrap {
+  position: relative;
+  width: 260rpx;
+  height: 260rpx;
+  margin: 64rpx 0 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: zoomIn 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.25s both;
+}
+.badge-ring {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: transparent;
+}
+.ring-outer {
+  width: 260rpx;
+  height: 260rpx;
+  border-width: 2rpx;
+  border-color: rgba(232, 200, 122, 0.35);
+  border-top-color: var(--gold);
+  border-right-color: var(--gold);
+  animation: spin 14s linear infinite;
+}
+.ring-inner {
+  width: 220rpx;
+  height: 220rpx;
+  border-width: 1rpx;
+  border-color: rgba(232, 200, 122, 0.25);
+  border-bottom-color: var(--gold-soft);
+  border-left-color: var(--gold-soft);
+  animation: spin 10s linear infinite reverse;
+}
+.badge {
+  position: relative;
+  width: 188rpx;
+  height: 188rpx;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 32%, rgba(255, 244, 204, 0.18), rgba(20, 26, 61, 0.9) 70%),
+              linear-gradient(160deg, #1a2148, #0d1330);
+  border: 2rpx solid rgba(232, 200, 122, 0.55);
+  box-shadow: 0 0 40rpx rgba(232, 200, 122, 0.22), inset 0 0 30rpx rgba(232, 200, 122, 0.12);
+}
+.badge-emoji {
+  font-size: 60rpx;
+  line-height: 1;
+}
+.badge-ai {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  letter-spacing: 6rpx;
+  font-weight: 700;
+}
+.badge-light {
+  position: absolute;
+  bottom: -10rpx;
+  width: 160rpx;
+  height: 24rpx;
+  background: radial-gradient(ellipse, rgba(232, 200, 122, 0.35), transparent 70%);
+  filter: blur(6rpx);
+}
+
+/* ---------- 标题 ---------- */
+.title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.45s both;
+}
+.t-college {
+  font-size: 46rpx;
+  letter-spacing: 10rpx;
+  font-weight: 700;
+}
+.t-grade {
+  margin-top: 10rpx;
+  font-size: 72rpx;
+  letter-spacing: 12rpx;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.t-name {
+  margin-top: 22rpx;
+  font-size: 28rpx;
+  letter-spacing: 6rpx;
+  color: var(--text-dim);
+}
+.t-card {
+  margin-top: 34rpx;
+  padding: 16rpx 52rpx;
+  border-top: 1rpx solid var(--gold-soft);
+  border-bottom: 1rpx solid var(--gold-soft);
+}
+.t-invite {
+  font-size: 52rpx;
+  letter-spacing: 20rpx;
+  font-weight: 700;
+  padding-left: 20rpx; /* 补偿字距视觉重心 */
+}
+.t-date {
+  margin-top: 26rpx;
+  font-size: 24rpx;
+  letter-spacing: 5rpx;
+  color: var(--text-faint);
+}
+
+/* ---------- 底部 ---------- */
+.cover-foot {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1.1s ease 0.75s both;
+}
+.seal {
+  position: relative;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 3rpx solid rgba(200, 68, 68, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36rpx;
+  transform: rotate(-12deg);
+  background: rgba(200, 68, 68, 0.06);
+}
+.seal-text {
+  font-size: 32rpx;
+  color: rgba(232, 96, 96, 0.95);
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+.seal-sub {
+  font-size: 18rpx;
+  color: rgba(232, 96, 96, 0.8);
+  letter-spacing: 4rpx;
+}
+.open-btn {
+  width: 100%;
+  height: 96rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  background: linear-gradient(135deg, #fbeebd 0%, #e8c87a 45%, #c9962f 100%);
+  box-shadow: 0 12rpx 36rpx rgba(201, 150, 47, 0.4), inset 0 2rpx 0 rgba(255, 255, 255, 0.6);
+}
+.open-btn::after { border: none; }
+.open-btn-text {
+  font-size: 32rpx;
+  font-weight: 700;
+  letter-spacing: 8rpx;
+  color: #2a1f06;
+}
+.open-btn-arrow {
+  font-size: 40rpx;
+  color: #2a1f06;
+  font-weight: 300;
+}
+.open-btn-hover {
+  transform: scale(0.97);
+  opacity: 0.92;
+}
+.foot-hint {
+  margin-top: 28rpx;
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+  color: var(--text-faint);
+}
+
+/* ---------- 音乐按钮 ---------- */
+.music-fab {
+  position: fixed;
+  right: 32rpx;
+  bottom: calc(60rpx + env(safe-area-inset-bottom));
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1rpx solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(8rpx);
+}
+.music-fab .disc {
+  font-size: 36rpx;
+}
+.music-fab.playing .disc {
+  animation: spin 4s linear infinite;
+}

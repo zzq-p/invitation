@@ -1,0 +1,361 @@
+/* 出席确认页样式 */
+.back-icon {
+  font-size: 48rpx;
+  color: var(--gold-light);
+  font-weight: 300;
+  line-height: 1;
+  margin-top: -4rpx;
+}
+
+.page-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 0 30rpx;
+}
+.ph-emoji {
+  font-size: 64rpx;
+  margin-bottom: 10rpx;
+}
+.ph-title {
+  font-size: 48rpx;
+  font-weight: 800;
+  letter-spacing: 8rpx;
+}
+.ph-sub {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: var(--text-faint);
+  letter-spacing: 2rpx;
+}
+
+/* ---------- 表单 ---------- */
+.form {
+  padding: 16rpx 36rpx 28rpx;
+}
+.field {
+  padding: 26rpx 0;
+  border-bottom: 1rpx solid rgba(232, 200, 122, 0.1);
+}
+.field:last-child {
+  border-bottom: none;
+}
+.label {
+  display: block;
+  font-size: 27rpx;
+  color: var(--gold-light);
+  letter-spacing: 2rpx;
+  margin-bottom: 20rpx;
+}
+.req {
+  color: #e08080;
+  margin-left: 4rpx;
+}
+.ph {
+  color: rgba(185, 178, 212, 0.45);
+}
+
+/* 身份选择 */
+.role-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18rpx;
+}
+.role {
+  width: calc((100% - 18rpx) / 2);
+  box-sizing: border-box;
+  padding: 22rpx 0;
+  border-radius: 16rpx;
+  border: 1rpx solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+}
+.role-emoji {
+  font-size: 34rpx;
+}
+.role-label {
+  font-size: 27rpx;
+  color: var(--text-dim);
+}
+.role.active {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(232, 200, 122, 0.18), rgba(232, 200, 122, 0.06));
+  box-shadow: 0 0 20rpx rgba(232, 200, 122, 0.15);
+}
+.role.active .role-label {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+/* 输入框 */
+.input {
+  height: 80rpx;
+  font-size: 28rpx;
+  color: var(--text);
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1rpx solid rgba(232, 200, 122, 0.14);
+}
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 130rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: var(--text);
+  border-radius: 12rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1rpx solid rgba(232, 200, 122, 0.14);
+}
+
+/* 人数步进 */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 40rpx;
+}
+.step-btn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  border: 1rpx solid var(--gold-soft);
+  color: var(--gold);
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(232, 200, 122, 0.06);
+}
+.step-btn.disabled {
+  opacity: 0.3;
+}
+.step-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  min-width: 60rpx;
+  text-align: center;
+}
+
+/* 需求 chips */
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.chip {
+  padding: 14rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 25rpx;
+  color: var(--text-dim);
+  border: 1rpx solid var(--card-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+.chip.active {
+  color: var(--gold-light);
+  border-color: var(--gold);
+  background: rgba(232, 200, 122, 0.12);
+}
+
+.submit-btn {
+  margin-top: 36rpx;
+  width: 100%;
+}
+.privacy {
+  display: block;
+  text-align: center;
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  color: var(--text-faint);
+}
+
+/* ---------- 电子席位票 ---------- */
+.ticket {
+  position: relative;
+  border-radius: 24rpx 24rpx 0 0;
+  border: 1rpx solid var(--gold-soft);
+  border-bottom: none;
+  background:
+    linear-gradient(180deg, rgba(232, 200, 122, 0.12), rgba(20, 26, 61, 0.6)),
+    #121838;
+  padding: 40rpx 38rpx 36rpx;
+  overflow: hidden;
+}
+.ticket::before {
+  content: '';
+  position: absolute;
+  inset: 14rpx;
+  border: 1rpx dashed rgba(232, 200, 122, 0.25);
+  border-radius: 16rpx;
+  pointer-events: none;
+}
+.tk-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+.tk-college {
+  font-size: 34rpx;
+  letter-spacing: 4rpx;
+  font-weight: 700;
+}
+.tk-grade {
+  font-size: 24rpx;
+  letter-spacing: 4rpx;
+  color: var(--text-dim);
+}
+.tk-no-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 10rpx;
+  margin-top: 20rpx;
+}
+.tk-no-label {
+  font-size: 20rpx;
+  color: var(--text-faint);
+}
+.tk-no {
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  font-weight: 700;
+}
+.tk-rows {
+  margin-top: 24rpx;
+}
+.tk-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 12rpx 0;
+  border-bottom: 1rpx dashed rgba(232, 200, 122, 0.12);
+}
+.tk-row:last-child {
+  border-bottom: none;
+}
+.tk-k {
+  width: 110rpx;
+  flex-shrink: 0;
+  font-size: 25rpx;
+  color: var(--text-faint);
+}
+.tk-v {
+  flex: 1;
+  font-size: 26rpx;
+  color: var(--text);
+}
+
+/* 印章 */
+.tk-seal {
+  position: absolute;
+  right: 30rpx;
+  top: 26rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  border: 3rpx solid rgba(200, 68, 68, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-14deg);
+  opacity: 0.85;
+}
+.tk-seal text {
+  font-size: 22rpx;
+  color: rgba(232, 96, 96, 0.95);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* 撕齿 */
+.perforation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 30rpx;
+}
+.dash {
+  flex: 1;
+  border-top: 2rpx dashed var(--gold-soft);
+}
+.notch {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 1rpx solid var(--gold-soft);
+}
+.notch-l {
+  left: -16rpx;
+}
+.notch-r {
+  right: -16rpx;
+}
+
+/* 副券 */
+.stub {
+  border-radius: 0 0 24rpx 24rpx;
+  border: 1rpx solid var(--gold-soft);
+  border-top: none;
+  background: rgba(20, 26, 61, 0.6);
+  padding: 28rpx 38rpx 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+.stub-l {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+.stub-title {
+  font-size: 26rpx;
+  color: var(--gold);
+  letter-spacing: 3rpx;
+}
+.stub-no {
+  font-size: 22rpx;
+  color: var(--text-faint);
+}
+.stub-name {
+  font-size: 24rpx;
+  color: var(--text-dim);
+}
+.barcode {
+  display: flex;
+  align-items: flex-end;
+  gap: 4rpx;
+  height: 72rpx;
+}
+.barcode .bar {
+  height: 100%;
+  background: var(--text);
+}
+
+/* 操作 */
+.ticket-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 40rpx;
+}
+.ta-btn {
+  flex: 1;
+  margin: 0;
+}
+.link-btn {
+  margin-top: 28rpx;
+  background: transparent;
+  color: var(--gold-soft);
+  font-size: 25rpx;
+  line-height: 2;
+}
+.link-btn::after {
+  border: none;
+}
